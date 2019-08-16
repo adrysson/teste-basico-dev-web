@@ -24,10 +24,9 @@ class PessoasController extends AppController
             $pessoa = $this->Pessoas->patchEntity($pessoa, $this->request->getData());
             if ($this->Pessoas->save($pessoa)) {
                 $this->Flash->success(__('The pessoa has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The pessoa could not be saved. Please, try again.'));
             }
-            $this->Flash->error(__('The pessoa could not be saved. Please, try again.'));
         }
         $cidade = $this->Pessoas->Cidade->find('list', ['limit' => 200]);
 

@@ -9,10 +9,20 @@
     <div class="card-header">Formulário</div>
     <?= $this->Form->create($pessoa) ?>
     <div class="card-body">
-        <?= $this->Form->control('nome', ['class' => 'form-control']) ?>
-        <?= $this->Form->control('email', ['class' => 'form-control']) ?>
-        <?= $this->Form->control('celular', ['class' => 'form-control']) ?>
-        <?= $this->Form->control('cidade_id', ['options' => $cidade, 'class' => 'form-control']) ?>
+        <div class="row">
+            <div class="col-md-12">
+                <?= $this->Form->control('nome', ['class' => 'form-control']) ?>
+            </div>
+            <div class="col-md-6">
+                <?= $this->Form->control('email', ['class' => 'form-control']) ?>
+            </div>
+            <div class="col-md-6">
+                <?= $this->Form->control('celular', ['class' => 'form-control']) ?>
+            </div>
+            <div class="col-md-6">
+                <?= $this->Form->control('cidade_id', ['options' => $cidade, 'class' => 'form-control']) ?>
+            </div>
+        </div>
     </div>
     <div class="card-footer">
         <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>

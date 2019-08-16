@@ -5,19 +5,21 @@
  */
  $this->assign('title', 'Cadastro de Pessoas');
 ?>
-<div class="pessoas form large-9 medium-8 columns content">
+<div class="card my-3">
+    <div class="card-header">Formulário</div>
     <?= $this->Form->create($pessoa) ?>
-    <fieldset>
-        <legend><?= __('Add Pessoa') ?></legend>
-        <?php
-            echo $this->Form->control('nome');
-            echo $this->Form->control('email');
-            echo $this->Form->control('celular');
-            echo $this->Form->control('cidade_id', ['options' => $cidade]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <div class="card-body">
+        <?= $this->Form->control('nome', ['class' => 'form-control']) ?>
+        <?= $this->Form->control('email', ['class' => 'form-control']) ?>
+        <?= $this->Form->control('celular', ['class' => 'form-control']) ?>
+        <?= $this->Form->control('cidade_id', ['options' => $cidade, 'class' => 'form-control']) ?>
+    </div>
+    <div class="card-footer">
+        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>
+    </div>
     <?= $this->Form->end() ?>
+</div>
+<div class="pessoas form large-9 medium-8 columns content">
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

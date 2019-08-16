@@ -6,7 +6,7 @@
  $this->assign('title', 'Cadastro de Pessoas');
 ?>
 <div class="card my-3">
-    <div class="card-header">Formulário</div>
+    <div class="card-header text-white bg-dark">Formulário</div>
     <?= $this->Form->create($pessoa) ?>
     <div class="card-body">
         <div class="row">
@@ -25,12 +25,13 @@
         </div>
     </div>
     <div class="card-footer">
-        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>
+        <?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-success']) ?>
     </div>
     <?= $this->Form->end() ?>
 </div>
-<div class="pessoas form large-9 medium-8 columns content">
-    <table cellpadding="0" cellspacing="0">
+<div class="card my-3">
+    <div class="card-header text-white bg-dark">Pessoas cadastradas</div>
+    <table class="table table-light">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>

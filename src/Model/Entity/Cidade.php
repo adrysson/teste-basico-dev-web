@@ -28,4 +28,9 @@ class Cidade extends Entity
         'id_estado' => true,
         'pessoas' => true
     ];
+
+    protected function _getNomCidade(string $nome)
+    {
+        return utf8_decode($nome);
+    }
 }

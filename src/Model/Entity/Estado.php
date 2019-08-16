@@ -27,4 +27,9 @@ class Estado extends Entity
         'sgl_estado' => true,
         'id_pais' => true
     ];
+
+    protected function _getNomEstado(string $nome)
+    {
+        return utf8_decode($nome);
+    }
 }

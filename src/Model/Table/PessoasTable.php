@@ -40,7 +40,7 @@ class PessoasTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Cidade', [
+        $this->belongsTo('Cidades', [
             'foreignKey' => 'cidade_id',
             'joinType' => 'INNER'
         ]);

@@ -32,6 +32,6 @@ class Pessoa extends Entity
         'celular' => true,
         'cidade_id' => true,
         'created' => true,
-        'cidade' => true
+        'cidades' => true
     ];
 }

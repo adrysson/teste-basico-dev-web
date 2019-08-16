@@ -20,7 +20,7 @@
                 <?= $this->Form->control('celular', ['class' => 'form-control']) ?>
             </div>
             <div class="col-md-6">
-                <?= $this->Form->control('cidade_id', ['options' => $cidade, 'class' => 'form-control']) ?>
+                <?= $this->Form->control('estado_id', ['options' => $estados, 'class' => 'form-control']) ?>
             </div>
         </div>
     </div>

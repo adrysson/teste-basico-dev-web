@@ -28,14 +28,14 @@ class PessoasController extends AppController
                 $this->Flash->error(__('The pessoa could not be saved. Please, try again.'));
             }
         }
-        $cidade = $this->Pessoas->Cidade->find('list', ['limit' => 200]);
+        $estados = $this->Pessoas->Cidades->Estados->find('list', ['limit' => 200]);
 
         $this->paginate = [
-            'contain' => ['Cidade']
+            'contain' => ['Cidades']
         ];
         $pessoas = $this->paginate($this->Pessoas);
 
-        $this->set(compact('pessoa', 'cidade', 'pessoas'));
+        $this->set(compact('pessoa', 'estados', 'pessoas'));
     }
 
     /**

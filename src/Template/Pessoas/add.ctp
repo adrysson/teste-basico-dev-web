@@ -19,10 +19,10 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <?= $this->Form->control('nome', ['class' => 'form-control']) ?>
+                    <?= $this->Form->control('nome', ['class' => 'form-control', 'label' => 'Nome completo']) ?>
                 </div>
                 <div class="col-md-6">
-                    <?= $this->Form->control('email', ['class' => 'form-control']) ?>
+                    <?= $this->Form->control('email', ['class' => 'form-control', 'label' => 'E-mail']) ?>
                 </div>
                 <div class="col-md-6">
                     <?= $this->Form->control('celular', ['class' => 'form-control']) ?>

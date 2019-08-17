@@ -4,6 +4,13 @@
  * @var \App\Model\Entity\Pessoa $pessoa
  */
  $this->assign('title', 'Cadastro de Pessoas');
+ $this->Paginator->setTemplates([
+     'prevActive' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+     'prevDisabled' => '<li class="page-item"><a class="page-link" href="javascript:;">{{text}}</a></li>',
+     'number' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+     'nextDisabled' => '<li class="page-item"><a class="page-link" href="javascript:;">{{text}}</a></li>',
+     'nextActive' => '<li class="page-item"><a class="page-link" href="{{url}}">{{text}}</a></li>',
+ ]);
 ?>
 <div class="card my-3">
     <div class="card-header text-white bg-dark">Formulário</div>
@@ -61,14 +68,14 @@
             <?php endforeach; ?>
         </tbody>
     </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+    <div class="card-footer">
+        <p class="float-left"><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        <ul class="pagination float-right">
+            <?php
+            echo $this->Paginator->prev('«');
+            echo $this->Paginator->numbers();
+            echo $this->Paginator->next('»');
+            ?>
         </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 </div>

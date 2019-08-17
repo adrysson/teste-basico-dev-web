@@ -66,32 +66,34 @@
     </div>
     <div class="card my-3">
         <div class="card-header text-white bg-dark">Pessoas cadastradas</div>
-        <table class="table table-light">
-            <thead>
-                <tr>
-                    <th scope="col"><?= $this->Paginator->sort('nome', 'Nome completo') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('email', 'E-mail') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('celular', 'Celular') ?></th>
-                    <th scope="col">Cidade/UF</th>
-                    <th scope="col"><?= $this->Paginator->sort('created', 'Cadastrado em') ?></th>
-                    <th scope="col" class="actions"><?= __('Ações') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($pessoas as $pessoa): ?>
+        <div class="table-container">
+            <table class="table table-light">
+                <thead>
                     <tr>
-                        <td><?= h($pessoa->nome) ?></td>
-                        <td><?= h($pessoa->email) ?></td>
-                        <td><?= h($pessoa->celular) ?></td>
-                        <td><?= h($pessoa->cidade->nom_cidade) ?>/<?= h($pessoa->cidade->estado->sgl_estado) ?></td>
-                        <td><?= $pessoa->created->format('d/m/Y') ?></td>
-                        <td class="actions">
-                            <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $pessoa->id], ['confirm' => __('Você tem certeza que deseja excluir {0}?', $pessoa->nome)]) ?>
-                        </td>
+                        <th scope="col"><?= $this->Paginator->sort('nome', 'Nome completo') ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('email', 'E-mail') ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('celular', 'Celular') ?></th>
+                        <th scope="col">Cidade/UF</th>
+                        <th scope="col"><?= $this->Paginator->sort('created', 'Cadastrado em') ?></th>
+                        <th scope="col" class="actions"><?= __('Ações') ?></th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($pessoas as $pessoa): ?>
+                        <tr>
+                            <td><?= h($pessoa->nome) ?></td>
+                            <td><?= h($pessoa->email) ?></td>
+                            <td><?= h($pessoa->celular) ?></td>
+                            <td><?= h($pessoa->cidade->nom_cidade) ?>/<?= h($pessoa->cidade->estado->sgl_estado) ?></td>
+                            <td><?= $pessoa->created->format('d/m/Y') ?></td>
+                            <td class="actions">
+                                <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $pessoa->id], ['confirm' => __('Você tem certeza que deseja excluir {0}?', $pessoa->nome)]) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
         <div class="card-footer">
             <p class="float-left"><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, exibindo {{current}} registro(s) de um total de {{count}}')]) ?></p>
             <ul class="pagination float-right">

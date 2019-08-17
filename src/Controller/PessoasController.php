@@ -23,9 +23,9 @@ class PessoasController extends AppController
         if ($this->request->is('post')) {
             $pessoa = $this->Pessoas->patchEntity($pessoa, $this->request->getData());
             if ($this->Pessoas->save($pessoa)) {
-                $this->Flash->success(__('The pessoa has been saved.'));
+                $this->Flash->success(__('Dados salvos com sucesso.'));
             } else {
-                $this->Flash->error(__('The pessoa could not be saved. Please, try again.'));
+                $this->Flash->error(__('Não foi possível salvar os dados. Tente novamente.'));
             }
         }
 
@@ -49,9 +49,9 @@ class PessoasController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $pessoa = $this->Pessoas->get($id);
         if ($this->Pessoas->delete($pessoa)) {
-            $this->Flash->success(__('The pessoa has been deleted.'));
+            $this->Flash->success(__('Dados excluídos com sucesso..'));
         } else {
-            $this->Flash->error(__('The pessoa could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Não foi possível excluir os dados. Tente novamente'));
         }
 
         return $this->redirect(['action' => 'add']);

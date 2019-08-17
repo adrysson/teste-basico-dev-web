@@ -91,7 +91,7 @@ class PessoasTable extends Table
     {
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->isUnique(['celular']));
-        $rules->add($rules->existsIn(['cidade_id'], 'Cidade'));
+        $rules->add($rules->existsIn(['cidade_id'], 'Cidades'));
 
         return $rules;
     }

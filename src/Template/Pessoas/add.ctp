@@ -69,26 +69,24 @@
         <table class="table table-light">
             <thead>
                 <tr>
-                    <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('nome') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('celular') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('cidade_id') ?></th>
-                    <th scope="col"><?= $this->Paginator->sort('created', 'Criado em') ?></th>
+                    <th scope="col"><?= $this->Paginator->sort('nome', 'Nome completo') ?></th>
+                    <th scope="col"><?= $this->Paginator->sort('email', 'E-mail') ?></th>
+                    <th scope="col"><?= $this->Paginator->sort('celular', 'Celular') ?></th>
+                    <th scope="col">Cidade/UF</th>
+                    <th scope="col"><?= $this->Paginator->sort('created', 'Cadastrado em') ?></th>
                     <th scope="col" class="actions"><?= __('Ações') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($pessoas as $pessoa): ?>
                     <tr>
-                        <td><?= $this->Number->format($pessoa->id) ?></td>
                         <td><?= h($pessoa->nome) ?></td>
                         <td><?= h($pessoa->email) ?></td>
                         <td><?= h($pessoa->celular) ?></td>
-                        <td><?= h($pessoa->cidade->nom_cidade) ?></td>
+                        <td><?= h($pessoa->cidade->nom_cidade) ?>/<?= h($pessoa->cidade->estado->sgl_estado) ?></td>
                         <td><?= $pessoa->created->format('d/m/Y') ?></td>
                         <td class="actions">
-                            <?= $this->Form->postLink(__('Apagar'), ['action' => 'delete', $pessoa->id], ['confirm' => __('Você tem certeza que deseja excluir {0}?', $pessoa->nome)]) ?>
+                            <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $pessoa->id], ['confirm' => __('Você tem certeza que deseja excluir {0}?', $pessoa->nome)]) ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

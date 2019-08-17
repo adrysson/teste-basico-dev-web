@@ -30,7 +30,7 @@ class PessoasController extends AppController
         }
 
         $this->paginate = [
-            'contain' => ['Cidades']
+            'contain' => ['Cidades' => 'Estados']
         ];
         $pessoas = $this->paginate($this->Pessoas);
 

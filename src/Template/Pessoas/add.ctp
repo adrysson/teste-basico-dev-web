@@ -27,9 +27,7 @@
                 <div class="col-md-6">
                     <?= $this->Form->control('celular', ['class' => 'form-control']) ?>
                 </div>
-                <div class="col-md-6">
-                    <?= $this->Form->control('estado_id', ['options' => $estados, 'class' => 'form-control']) ?>
-                </div>
+                <estados-cidades></estados-cidades>
             </div>
         </div>
         <div class="card-footer">
@@ -83,15 +81,13 @@
 <?php
 $this->start('script');
 
-echo $this->element('VueComponents/estados');
-echo $this->element('VueComponents/cidades');
+echo $this->element('VueComponents/estadosCidades');
 ?>
 <script>
 const app = new Vue({
     el: '#app',
     components: {
-        estados,
-        cidades
+        estadosCidades
     }
 })
 </script>

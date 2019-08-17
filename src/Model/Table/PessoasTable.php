@@ -62,7 +62,16 @@ class PessoasTable extends Table
             ->scalar('nome', 'O campo Nome Completo foi preenchido com o tipo de dado errado')
             ->maxLength('nome', 255, 'O campo Nome Completo deve ser preenchido com no máximo 255 caracteres')
             ->requirePresence('nome', 'create', 'O Nome Completo deve estar presente no formulário')
-            ->notEmptyString('nome', 'O campo Nome Completo é obrigatório');
+            ->notEmptyString('nome', 'O campo Nome Completo é obrigatório')
+            ->add('nome', 'isComplete', [
+                'rule' => function (?string $data) {
+                    $words = explode(' ', $data);
+                    if (count($words) < 2) {
+                        return 'Informe seu nome completo';
+                    }
+                    return true;
+                },
+            ]);
 
         $validator
             ->email('email', 'O campo E-mail deve ser preenchido com um e-mail válido')

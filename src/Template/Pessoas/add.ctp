@@ -25,7 +25,7 @@
                     <?= $this->Form->control('email', ['class' => 'form-control', 'label' => 'E-mail']) ?>
                 </div>
                 <div class="col-md-6">
-                    <?= $this->Form->control('celular', ['class' => 'form-control']) ?>
+                    <?= $this->Form->control('celular', ['class' => 'form-control', 'ref' => 'celular']) ?>
                 </div>
                 <div class="col-md-12">
                     <div class="row">
@@ -125,6 +125,7 @@ const app = new Vue({
     },
     mounted: function() {
         this.getEstados()
+        $(this.$refs.celular).mask('(00) 00000-0000');
     },
     methods: {
         isEmpty: function(object) {

@@ -81,7 +81,8 @@ class PessoasTable extends Table
 
         $validator
             ->scalar('celular', 'O campo Celular foi enviado com o tipo de dado errado')
-            ->maxLength('celular', 30, 'O campo Celular deve ser preenchido com no máximo 30 caracteres')
+            ->maxLength('celular', 17, 'O campo Celular deve ser preenchido com 16 caracteres')
+            ->minLength('celular', 15, 'O campo Celular deve ser preenchido com 16 caracteres')
             ->requirePresence('celular', 'create', 'O Celular deve estar presente no formulário')
             ->notEmptyString('celular', 'O campo Celular é obrigatório')
             ->add('celular', 'unique', ['rule' => 'validateUnique', 'provider' => 'table', 'message' => 'Já existe uma pessoa cadastrada com esse Celular']);

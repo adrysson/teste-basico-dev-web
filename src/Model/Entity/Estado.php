@@ -32,4 +32,9 @@ class Estado extends Entity
     {
         return utf8_decode($nome);
     }
+
+    protected function _getSglEstado(string $uf)
+    {
+        return substr($uf, 0, 2);
+    }
 }

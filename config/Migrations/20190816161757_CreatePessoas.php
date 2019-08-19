@@ -34,7 +34,7 @@ class CreatePessoas extends AbstractMigration
             'null' => false,
         ]);
         $table->addColumn('created', 'datetime', [
-            'default' => 'CURRENT_TIMESTAMP',
+            'default' => null,
             'null' => false,
         ]);
         $table->addForeignKey('cidade_id', 'cidade', 'id_cidade', ['delete' => 'CASCADE', 'update' => 'NO_ACTION']);

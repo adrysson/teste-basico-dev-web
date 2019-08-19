@@ -30,11 +30,7 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-6">
-                            <div align="center" class="my-4" v-if="loadingEstados">
-                                <div class="spinner-border" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                            </div>
+                            <t-loading :loading="loadingEstados"></t-loading>
                             <div v-if="!isEmpty(estados) && !loadingEstados" class="input select">
                                 <label for="estado-id">Estado</label>
                                 <select v-model="form.estado_id" name="estado_id" id="estado-id" class="form-control" @change="getCidades()">
@@ -43,11 +39,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div align="center" class="my-4" v-if="loadingCidades">
-                                <div class="spinner-border" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                            </div>
+                            <t-loading :loading="loadingCidades"></t-loading>
                             <div v-if="!isEmpty(cidades) && !loadingCidades" class="input select">
                                 <label for="cidade-id">Cidade</label>
                                 <select v-model="form.cidade_id" name="cidade_id" id="cidade-id" class="form-control">
@@ -107,4 +99,7 @@
     </div>
 </div>
 
-<?= $this->Html->script('form-table-pessoas', ['block' => 'script']) ?>
+<?php
+echo $this->element('VueComponents/TLoading');
+echo $this->Html->script('form-table-pessoas', ['block' => 'script']);
+?>

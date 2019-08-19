@@ -1,5 +1,8 @@
 const app = new Vue({
     el: '#app',
+    components: {
+        TLoading
+    },
     data: function() {
         return {
             form: {

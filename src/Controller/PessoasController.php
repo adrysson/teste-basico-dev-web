@@ -23,10 +23,14 @@ class PessoasController extends AppController
         if ($this->request->is('post')) {
             $pessoa = $this->Pessoas->patchEntity($pessoa, $this->request->getData());
             if ($this->Pessoas->save($pessoa)) {
-                $this->Flash->success(__('Dados salvos com sucesso.'));
-            } else {
-                $this->Flash->error(__('Não foi possível salvar os dados. Tente novamente.'));
+                return $this->response->withStringBody(__('Dados salvos com sucesso.'));
+                // $this->Flash->success(__('Dados salvos com sucesso.'));
             }
+            return $this->response
+                ->withType('application/json')
+                ->withStatus(422)
+                ->withStringBody(__('Dados salvos com sucesso.'));
+            // $this->Flash->error(__('Não foi possível salvar os dados. Tente novamente.'));
         }
 
         $this->paginate = [

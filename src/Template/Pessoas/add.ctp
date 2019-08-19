@@ -15,46 +15,67 @@
 <div id="app">
     <div class="card my-3">
         <div class="card-header text-white bg-dark">Formulário</div>
-        <?= $this->Form->create($pessoa) ?>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <?= $this->Form->control('nome', ['class' => 'form-control', 'label' => 'Nome completo']) ?>
-                </div>
-                <div class="col-md-6">
-                    <?= $this->Form->control('email', ['class' => 'form-control', 'label' => 'E-mail']) ?>
-                </div>
-                <div class="col-md-6">
-                    <?= $this->Form->control('celular', ['class' => 'form-control', 'ref' => 'celular']) ?>
-                </div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <t-loading :loading="loadingEstados"></t-loading>
-                            <div v-if="!isEmpty(estados) && !loadingEstados" class="input select">
-                                <label for="estado-id">Estado</label>
-                                <select v-model="form.estado_id" name="estado_id" id="estado-id" class="form-control" @change="getCidades()">
-                                    <option v-for="estado in estados" :value="estado.id_estado">{{estado.nom_estado}}</option>
-                                </select>
+        <form @submit.prevent="submit">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input text required error">
+                            <label for="nome">Nome completo</label>
+                            <input type="text" name="nome" v-model="form.nome" required="required" id="nome" maxlength="255" class="form-control">
+                            <div v-if="errors.nome">
+                                <div v-for="error in errors.nome" class="error-message">{{error}}</div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <t-loading :loading="loadingCidades"></t-loading>
-                            <div v-if="!isEmpty(cidades) && !loadingCidades" class="input select">
-                                <label for="cidade-id">Cidade</label>
-                                <select v-model="form.cidade_id" name="cidade_id" id="cidade-id" class="form-control">
-                                    <option v-for="cidade in cidades" :value="cidade.id_cidade">{{cidade.nom_cidade}}</option>
-                                </select>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input email required">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" required="required" maxlength="255" id="email" class="form-control">
+                            <div v-if="errors.email">
+                                <div v-for="error in errors.email" class="error-message">{{error}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input text required">
+                            <label for="celular">Celular</label>
+                            <input type="text" name="celular" required="required" maxlength="15" id="celular" class="form-control">
+                            <div v-if="errors.celular">
+                                <div v-for="error in errors.celular" class="error-message">{{error}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <t-loading :loading="loadingEstados"></t-loading>
+                                <div v-if="!isEmpty(estados) && !loadingEstados" class="input select">
+                                    <label for="estado-id">Estado</label>
+                                    <select v-model="form.estado_id" name="estado_id" id="estado-id" class="form-control" @change="getCidades()">
+                                        <option v-for="estado in estados" :value="estado.id_estado">{{estado.nom_estado}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <t-loading :loading="loadingCidades"></t-loading>
+                                <div v-if="!isEmpty(cidades) && !loadingCidades" class="input select">
+                                    <label for="cidade-id">Cidade</label>
+                                    <select v-model="form.cidade_id" name="cidade_id" id="cidade-id" class="form-control">
+                                        <option v-for="cidade in cidades" :value="cidade.id_cidade">{{cidade.nom_cidade}}</option>
+                                    </select>
+                                </div>
+                                <div v-if="errors.cidade_id">
+                                    <div v-for="error in errors.cidade_id" class="error-message">{{error}}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer">
-            <?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-success']) ?>
-        </div>
-        <?= $this->Form->end() ?>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+        </form>
     </div>
     <div class="card my-3">
         <div class="card-header text-white bg-dark">Pessoas cadastradas</div>
